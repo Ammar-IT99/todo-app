@@ -20,8 +20,6 @@ class _taskListState extends State<taskList> {
     if(listprovider.tasksList.isEmpty){
       listprovider.getAllTasksFromFireStore(authProvider.currentUser?.id??'');
     }
-
-
     return Column(
       children: [
           CalendarTimeline(

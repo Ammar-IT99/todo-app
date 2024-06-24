@@ -1,0 +1,12 @@
+{
+  "app_title": "todo app",
+  "settings": "Settings",
+  "language": "Language",
+  "english": "English",
+  "arabic": "Arabic",
+  "theme": "Theme",
+  "dark": "Dark",
+  "light": "Light",
+  "taskList": "Task List",
+   "login": "login"
+}

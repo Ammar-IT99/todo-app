@@ -9,7 +9,7 @@ class MyTheme {
   static Color greyColor = const Color(0xff707070);
   static Color backGroundColor = const Color(0xffDFECDB);
   static Color blackDarkColor = const Color(0xff141922);
-  static Color backGroundDarkColor = const Color(0xff060E1E);
+  static Color backGroundDarkColor = const Color(0xff091222);
   static ThemeData lightMode = ThemeData(
       primaryColor: primaryColor,
       bottomSheetTheme: BottomSheetThemeData(
@@ -42,5 +42,42 @@ class MyTheme {
           titleSmall: TextStyle(
               color: blackcolor, fontSize: 18, fontWeight: FontWeight.bold)
       )
+  );
+  static ThemeData darkMode = ThemeData(
+    primaryColor: backGroundDarkColor,
+    scaffoldBackgroundColor: backGroundDarkColor,
+    appBarTheme:  AppBarTheme(
+             backgroundColor: primaryColor,
+        elevation: 0,
+
+        iconTheme: IconThemeData(
+            color: whiteColor
+        ),
+        centerTitle: true
+
+    ),
+    bottomNavigationBarTheme:BottomNavigationBarThemeData(
+        selectedItemColor: primaryColor,
+        unselectedItemColor: whiteColor,
+        showUnselectedLabels: true,
+        backgroundColor: backGroundDarkColor
+    ) ,
+    textTheme: TextTheme(
+      titleLarge: TextStyle(
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+        color: whiteColor,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.w500,
+        color: whiteColor,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.w400,
+        color: whiteColor,
+      ),
+    ),
   );
 }

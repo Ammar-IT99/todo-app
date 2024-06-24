@@ -7,7 +7,8 @@ import 'package:todo_app/auth/login/login_Screen.dart';
 import 'Home_Screen.dart';
 import 'My_Theme.dart';
  import 'package:firebase_core/firebase_core.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'Providers/app_config_provider.dart';
 import 'auth/register/register_Screen.dart';
 
 void main() async {
@@ -27,8 +28,8 @@ void main() async {
    //     const Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
   runApp( MultiProvider(providers: [
     ChangeNotifierProvider(create: (context)=> ListProvider()),
-    ChangeNotifierProvider(create: (context)=> AuthProviders())
-
+    ChangeNotifierProvider(create: (context)=> AuthProviders()),
+    ChangeNotifierProvider(  create: (context) => AppConfigProvider())
   ],
   child: const MyApp(),));
 }
@@ -38,14 +39,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale(provider.appLanguage),
         debugShowCheckedModeBanner: false,
         initialRoute: loginScreen.routeName,
         routes: {
+          loginScreen.routeName:(context)=> loginScreen(),
           HomeScreen.routeName: (context) => const HomeScreen(),
           registerScreen.routeName:(context)=> registerScreen(),
-          loginScreen.routeName:(context)=> loginScreen(),
+
         },
-        theme: MyTheme.lightMode,);
+        theme: MyTheme.lightMode,
+            darkTheme: MyTheme.darkMode,
+    themeMode: provider.appTheme,);
   }
 }
