@@ -4,7 +4,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:todo_app/Home/settings/Settings_tap.dart';
 import 'package:todo_app/Home/task_list/add_Task_bottom_Sheet.dart';
 import 'package:todo_app/Home/task_list/task_list.dart';
-import 'package:todo_app/My_Theme.dart';
 import 'package:todo_app/Providers/list_provider.dart';
 import 'package:todo_app/auth/login/login_Screen.dart';
 import 'Providers/app_config_provider.dart';
@@ -42,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 listProvider.tasksList = [];
                 authProvider.currentUser = null;
-                Navigator.pushReplacementNamed(context, loginScreen.routeName);
+                Navigator.pushReplacementNamed(context, LoginScreen.routeName);
               },
               icon: const Icon(Icons.logout))
         ],
@@ -86,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: selecteditem == 0 ? taskList() : settingstap(),
+      body: selecteditem == 0 ? taskList() : const settingstap(),
     );
   }
 

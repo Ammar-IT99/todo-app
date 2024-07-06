@@ -7,6 +7,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'Language_bottom_sheet.dart';
 import 'Theme_bottom_sheet.dart';
 class settingstap extends StatefulWidget{
+  const settingstap({super.key});
+
   @override
   State<settingstap> createState() => _settingstapState();
 }

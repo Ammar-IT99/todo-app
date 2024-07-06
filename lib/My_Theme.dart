@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
 class MyTheme {
   static Color primaryColor = const Color(0xff5D9CEC);
   static Color whiteColor = const Color(0xffFFFFFF);

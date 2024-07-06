@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/Providers/auth_Provider.dart';
@@ -45,11 +44,11 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(provider.appLanguage),
         debugShowCheckedModeBanner: false,
-        initialRoute: loginScreen.routeName,
+        initialRoute: LoginScreen.routeName,
         routes: {
-          loginScreen.routeName:(context)=> loginScreen(),
+          LoginScreen.routeName:(context)=> const LoginScreen(),
           HomeScreen.routeName: (context) => const HomeScreen(),
-          registerScreen.routeName:(context)=> registerScreen(),
+          RegisterScreen.routeName:(context)=> const RegisterScreen(),
 
         },
         theme: MyTheme.lightMode,

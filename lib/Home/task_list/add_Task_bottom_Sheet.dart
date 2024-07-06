@@ -152,7 +152,7 @@ class _AddTaskBotttomSheetState extends State<AddTaskBotttomSheet> {
         listProvider.getAllTasksFromFireStore(authProvider.currentUser!.id!);
 
       })
-          .timeout(Duration(milliseconds: 500),
+          .timeout(const Duration(milliseconds: 500),
       onTimeout: (){
         print('task added SuccessFully');
         DialogUtlis.showMessage(context: context, message: 'task added SuccessFully');
