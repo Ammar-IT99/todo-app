@@ -1,16 +1,14 @@
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/My_Theme.dart';
+
 import 'package:todo_app/auth/custome_text_form_field.dart';
 import 'package:todo_app/auth/login/login_navigator.dart';
 import 'package:todo_app/auth/login/login_screen_view_model.dart';
-import 'package:todo_app/auth/register/register_Screen.dart';
-import 'package:todo_app/firebase_utlis.dart';
-import '../../Home_Screen.dart';
-import '../../Providers/auth_Provider.dart';
+import 'package:todo_app/auth/register/register_screen.dart';
+
 import '../../dialog_utlis.dart';
+import '../../my_theme.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = 'login_Screen';
@@ -26,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginNavigator{
   LoginScreenViewModel viewModel = LoginScreenViewModel();
   @override
   void initState() {
+    super.initState();
     // TODO: implement initState
     viewModel.navigator=this;
   }

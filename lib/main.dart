@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/Providers/auth_Provider.dart';
+import 'package:todo_app/Providers/auth_provider.dart';
 import 'package:todo_app/Providers/list_provider.dart';
-import 'package:todo_app/auth/login/login_Screen.dart';
-import 'Home_Screen.dart';
-import 'My_Theme.dart';
+import 'package:todo_app/auth/login/login_screen.dart';
+import 'home_screen.dart';
  import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'Providers/app_config_provider.dart';
-import 'auth/register/register_Screen.dart';
+import 'auth/register/register_screen.dart';
+import 'my_theme.dart';
 
 void main() async {
    WidgetsFlutterBinding.ensureInitialized();
@@ -49,7 +49,6 @@ class MyApp extends StatelessWidget {
           LoginScreen.routeName:(context)=> const LoginScreen(),
           HomeScreen.routeName: (context) => const HomeScreen(),
           RegisterScreen.routeName:(context)=> const RegisterScreen(),
-
         },
         theme: MyTheme.lightMode,
             darkTheme: MyTheme.darkMode,

@@ -2,12 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:todo_app/My_Theme.dart';
+
 
 import 'package:todo_app/auth/custome_text_form_field.dart';
 import 'package:todo_app/auth/register/register_navigator.dart';
 import 'package:todo_app/auth/register/register_screen_view_model.dart';
 import 'package:todo_app/dialog_utlis.dart';
+
+import '../../my_theme.dart';
 
 
 class RegisterScreen extends StatefulWidget {

@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-import '../../My_Theme.dart';
+import '../../my_theme.dart';
 import '../../Providers/app_config_provider.dart';
-class ThemeeBottomSheet extends StatefulWidget{
-  const ThemeeBottomSheet({super.key});
+class ThemeBottomSheet extends StatefulWidget{
+  const ThemeBottomSheet({super.key});
 
   @override
-  State<ThemeeBottomSheet> createState() => _ThemeeBottomSheetState();
+  State<ThemeBottomSheet> createState() => _ThemeBottomSheetState();
 }
 
-class _ThemeeBottomSheetState extends State<ThemeeBottomSheet> {
+class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   @override
   Widget build(BuildContext context) {
     var provider= Provider.of<AppConfigProvider>(context);
@@ -25,22 +25,22 @@ class _ThemeeBottomSheetState extends State<ThemeeBottomSheet> {
 
        InkWell(
          onTap: (){
-                provider.ChangeTheme(ThemeMode.dark);
+                provider.changeTheme(ThemeMode.dark);
                 //change to dark Theme.
          },
          child: provider.isDarkMode()?
-         GetSelectedItem(AppLocalizations.of(context)!.dark):
-         GetUnSelectedItem(AppLocalizations.of(context)!.dark) ,
+         getSelectedItem(AppLocalizations.of(context)!.dark):
+         getUnSelectedItem(AppLocalizations.of(context)!.dark) ,
        ),
        const SizedBox(height: 10,),
        InkWell(
          onTap: (){
-            provider.ChangeTheme(ThemeMode.light);
+            provider.changeTheme(ThemeMode.light);
            //change to Light Theme.
          },
          child: provider.isDarkMode()?
-    GetUnSelectedItem(AppLocalizations.of(context)!.light):
-                    GetSelectedItem(AppLocalizations.of(context)!.light),
+    getUnSelectedItem(AppLocalizations.of(context)!.light):
+                    getSelectedItem(AppLocalizations.of(context)!.light),
        ),
 
      ],
@@ -49,7 +49,7 @@ class _ThemeeBottomSheetState extends State<ThemeeBottomSheet> {
 
   }
 
- Widget GetSelectedItem(String text){
+ Widget getSelectedItem(String text){
    var provider= Provider.of<AppConfigProvider>(context);
     return  Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,7 +66,7 @@ class _ThemeeBottomSheetState extends State<ThemeeBottomSheet> {
     );
 
  }
-  Widget GetUnSelectedItem(String text){
+  Widget getUnSelectedItem(String text){
     var provider= Provider.of<AppConfigProvider>(context);
     return
         Container(

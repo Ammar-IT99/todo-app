@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/My_Theme.dart';
+import '../my_theme.dart';
 
 class CustomTextFormField extends StatelessWidget{
-  String label;
-  TextInputType keyboardType;
-  TextEditingController controller;
-  String? Function(String?) validator;
-  bool obscureText;
-  CustomTextFormField({super.key, required this.label,this.keyboardType=TextInputType.text,required this.controller,required this.validator,this.obscureText=false});
+ final String label;
+ final TextInputType keyboardType;
+ final TextEditingController controller;
+ final String? Function(String?) validator;
+ final bool obscureText;
+  const CustomTextFormField({super.key, required this.label,this.keyboardType=TextInputType.text,required this.controller,required this.validator,this.obscureText=false});
 
   @override
   Widget build(BuildContext context) {

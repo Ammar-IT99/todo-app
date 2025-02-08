@@ -3,22 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 
-import 'package:todo_app/My_Theme.dart';
+
 import 'package:todo_app/dialog_utlis.dart';
 
 import 'package:todo_app/firebase_utlis.dart';
-import '../../Providers/auth_Provider.dart';
+import '../../Providers/auth_provider.dart';
 import '../../Providers/list_provider.dart';
 import '../../model/task.dart';
+import '../../my_theme.dart';
 
-class taskListitem extends StatefulWidget {
-  Task task;
-  taskListitem({super.key, required this.task});
+class TaskListItem extends StatefulWidget {
+
+ final Task task;
+  const TaskListItem({super.key, required this.task});
   @override
-  State<taskListitem> createState() => _taskListitemState();
+  State<TaskListItem> createState() => _TaskListItemState();
 }
 
-class _taskListitemState extends State<taskListitem> {
+class _TaskListItemState extends State<TaskListItem> {
   @override
   Widget build(BuildContext context) {
     var authProvider = Provider.of<AuthProviders>(context,listen: false);
@@ -35,17 +37,17 @@ var listprovider= Provider.of<ListProvider>(context);
       motion: const DrawerMotion(),
 
       children:  [
-      // A SlidableAction can have an icon and/or a label.
+      // A clickableAction can have an icon and/or a label.
       SlidableAction(
       onPressed: (context){
         //delete task
         FirebaseUtlis.deleteTaskFromFireStore(widget.task,authProvider.currentUser!.id!).then((value) {
-          print('Task deleted Successfully');
+        //  print('Task deleted Successfully');
           DialogUtlis.showMessage(context: context, message: 'Task deleted SuccessFully');
           listprovider.getAllTasksFromFireStore(authProvider.currentUser!.id!);
         })
             .timeout(const Duration(milliseconds: 500),onTimeout: (){
-          print('Task deleted Successfully');
+        //  print('Task deleted Successfully');
           listprovider.getAllTasksFromFireStore(authProvider.currentUser!.id!);
         });
       },

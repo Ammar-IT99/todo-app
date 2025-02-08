@@ -23,20 +23,20 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
 
        InkWell(
          onTap: (){
-                provider.ChangeLanguage('en');
+                provider.changeLanguage('en');
          },
          child: provider.appLanguage=='en'?
-         GetSelectedItem(AppLocalizations.of(context)!.english):
-         GetUnSelectedItem(AppLocalizations.of(context)!.english) ,
+         getSelectedItem(AppLocalizations.of(context)!.english):
+         getUnSelectedItem(AppLocalizations.of(context)!.english) ,
        ),
        const SizedBox(height: 10,),
        InkWell(
          onTap: (){
-            provider.ChangeLanguage('ar');
+            provider.changeLanguage('ar');
          },
          child: provider.appLanguage=='ar'?
-    GetSelectedItem(AppLocalizations.of(context)!.arabic):
-                    GetUnSelectedItem(AppLocalizations.of(context)!.arabic),
+    getSelectedItem(AppLocalizations.of(context)!.arabic):
+                    getUnSelectedItem(AppLocalizations.of(context)!.arabic),
        ),
 
      ],
@@ -45,7 +45,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
 
   }
 
- Widget GetSelectedItem(String text){
+ Widget getSelectedItem(String text){
     return  Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -57,7 +57,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
     );
 
  }
-  Widget GetUnSelectedItem(String text){
+  Widget getUnSelectedItem(String text){
     return
         Text(text,
           style: Theme.of(context).textTheme.titleSmall,);

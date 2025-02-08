@@ -1,11 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/My_Theme.dart';
+import '../../my_theme.dart';
 import 'package:todo_app/dialog_utlis.dart';
 import 'package:todo_app/firebase_utlis.dart';
 import 'package:todo_app/model/task.dart';
 
-import '../../Providers/auth_Provider.dart';
+import '../../Providers/auth_provider.dart';
 import '../../Providers/list_provider.dart';
 
 
@@ -17,8 +18,8 @@ class AddTaskBotttomSheet extends StatefulWidget {
 }
 
 class _AddTaskBotttomSheetState extends State<AddTaskBotttomSheet> {
-  var SelectedDate= DateTime.now();
-  var FormKey = GlobalKey<FormState>();
+  var selectedDate= DateTime.now();
+  var formKey = GlobalKey<FormState>();
   String title = '';
   String description = '';
   late ListProvider listProvider;
@@ -39,7 +40,7 @@ class _AddTaskBotttomSheetState extends State<AddTaskBotttomSheet> {
                   fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center),
             Form(
-              key:FormKey ,
+              key:formKey ,
                 child:
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -92,7 +93,7 @@ class _AddTaskBotttomSheetState extends State<AddTaskBotttomSheet> {
                     onTap: (){
                       showSelectedDate();
                     },
-                    child: Text('${SelectedDate.day}/${SelectedDate.month}/${SelectedDate.year}',style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    child: Text('${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w400
                     ),
                         textAlign: TextAlign.center
@@ -129,7 +130,7 @@ class _AddTaskBotttomSheetState extends State<AddTaskBotttomSheet> {
    var chosenDate= await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime.now(), lastDate: DateTime.now().add(const Duration(days: 365))
     );
    if(chosenDate!=null){
-     SelectedDate=chosenDate;
+     selectedDate=chosenDate;
    }
    setState(() {
 
@@ -138,23 +139,29 @@ class _AddTaskBotttomSheetState extends State<AddTaskBotttomSheet> {
   }
 
   void addTask() {
-  if(FormKey.currentState?.validate()==true){
-    Task task=Task(title: title, description: description, dateTime: SelectedDate);
+  if(formKey.currentState?.validate()==true){
+    Task task=Task(title: title, description: description, dateTime: selectedDate);
     var authProvider = Provider.of<AuthProviders>(context,listen: false);
 
       FirebaseUtlis.addTaskToFirStore(task,authProvider.currentUser!.id
       !).then((value) {
-        print('task added SuccessFully');
+        if (kDebugMode) {
+          print('task added SuccessFully');
+        }
         Navigator.pop(context);
         DialogUtlis.showMessage(context: context, message: 'task added SuccessFully',
         posActionName: 'OK' );
-        print('after dialog');
+        if (kDebugMode) {
+          print('after dialog');
+        }
         listProvider.getAllTasksFromFireStore(authProvider.currentUser!.id!);
 
       })
           .timeout(const Duration(milliseconds: 500),
       onTimeout: (){
-        print('task added SuccessFully');
+        if (kDebugMode) {
+          print('task added SuccessFully');
+        }
         DialogUtlis.showMessage(context: context, message: 'task added SuccessFully');
         // refresh tasks
         listProvider.getAllTasksFromFireStore(authProvider.currentUser!.id!);

@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../My_Theme.dart';
+
 import '../../Providers/app_config_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'Language_bottom_sheet.dart';
-import 'Theme_bottom_sheet.dart';
-class settingstap extends StatefulWidget{
-  const settingstap({super.key});
+import '../../my_theme.dart';
+import 'language_bottom_sheet.dart';
+import 'theme_bottom_sheet.dart';
+class SettingsTap extends StatefulWidget{
+  const SettingsTap({super.key});
 
   @override
-  State<settingstap> createState() => _settingstapState();
+  State<SettingsTap> createState() => _SettingsTapState();
 }
 
-class _settingstapState extends State<settingstap> {
+class _SettingsTapState extends State<SettingsTap> {
   @override
   Widget build(BuildContext context) {
     var provider= Provider.of<AppConfigProvider>(context);
@@ -89,6 +90,6 @@ class _settingstapState extends State<settingstap> {
   }
 
   void showThemeBottomsheet() {
-    showModalBottomSheet(context: context, builder: (context) => const ThemeeBottomSheet(),);
+    showModalBottomSheet(context: context, builder: (context) => const ThemeBottomSheet(),);
   }
 }

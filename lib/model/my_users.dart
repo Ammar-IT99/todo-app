@@ -9,9 +9,9 @@ class MyUser{
 
  // json => object;
   MyUser.fromFireStore(Map<String,dynamic>data):this(
-    id: data?['id'] as String,
-    name: data?['name']as String,
-    email: data?['email']
+    id: data['id'] as String,
+    name: data['name']as String,
+    email: data['email']
   );
   Map<String,dynamic> toFireStore(){
     return{

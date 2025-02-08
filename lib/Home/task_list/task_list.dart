@@ -2,16 +2,19 @@ import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/Home/task_list/task_list_item.dart';
-import 'package:todo_app/My_Theme.dart';
+
 import 'package:todo_app/Providers/list_provider.dart';
 
-import '../../Providers/auth_Provider.dart';
-class taskList extends StatefulWidget{
+import '../../Providers/auth_provider.dart';
+import '../../my_theme.dart';
+class TaskList extends StatefulWidget{
+  const TaskList({super.key});
+
   @override
-  State<taskList> createState() => _taskListState();
+  State<TaskList> createState() => _TaskListState();
 }
 
-class _taskListState extends State<taskList> {
+class _TaskListState extends State<TaskList> {
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +37,13 @@ class _taskListState extends State<taskList> {
           dayColor: MyTheme.blackcolor,
           activeDayColor: Colors.white,
           activeBackgroundDayColor: MyTheme.primaryColor,
-          dotsColor: const Color(0xFF333A47),
+          dotColor: const Color(0xFF333A47),
           selectableDayPredicate: (date) => true,
           locale: 'ar',
        ),
         Expanded(
           child: ListView.builder(itemBuilder: (context,index){
-            return taskListitem(task: listprovider.tasksList[index],);
+            return TaskListItem(task: listprovider.tasksList[index],);
           },
             itemCount: listprovider.tasksList.length,
           ),
